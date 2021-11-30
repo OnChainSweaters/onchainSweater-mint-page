@@ -1,0 +1,13 @@
+.SweaterCarousel {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  z-index: 1000;
+  width: 100vw;
+}
+
+.sweater{
+  
+}
+
