@@ -69,7 +69,7 @@ main {
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  margin-top: -500px
+  margin-top: -530px
 }
 
 .sweaterCarousel img{
@@ -78,26 +78,32 @@ main {
   align-self: center;
 
 }
-@media (max-width: 599px) { 
-
-  .sweaterCarousel {
-    margin-top: -300px
-  }
-  .sweaterCarousel img{
-    max-width: 480px;
-  }
-}
-
 .sweaterNavigation {
   width: 80%;
   margin: auto;
   max-width: 1400px;
   display: flex;
-  margin-top: -300px;
-  margin-bottom: 200px;
+  margin-top: -500px;
+  margin-bottom: 420px;
+  
   justify-content: space-between;
   flex-direction: row;
 }
+@media (max-width: 599px) { 
+  .sweaterCarousel {
+    margin-top: -200px
+  }
+  .sweaterNavigation {
+    margin-top: -200px;
+    margin-bottom: 130px;
+  }
+
+  .sweaterCarousel img{
+    max-width: 360px;
+  }
+}
+
+
 
 .arrowRight {
   border: solid #fff600;
@@ -115,10 +121,12 @@ main {
   transform: rotate(135deg);
   
 }
-
-.logo {
-  width: 300px
+@media (max-width: 599px) { 
+  .logo {
+    width: 200px
+  }
 }
+
 
 
 .title-shadow {

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-const navigation = [
+export const navigation = [
   { name: "Wait, what?", href: "#wat" },
   { name: "Roadmap", href: "#roadmap" },
   { name: "Mint", href: "#mint" },
@@ -11,11 +11,11 @@ const navigation = [
 
 export default function Header() {
   return (
-    <div className="absolute w-screen top-0 z-20 pt-6 pb-16 sm:pb-24">
+    <div className="absolute w-screen z-20 pt-0 pb-0 md:pb-24 md:pt-6">
       <Popover>
-        <div className="max-w-screen-2xl p-t-8 mx-auto px-4 sm:px-6">
+        <div className="max-w-screen-xl p-t-8 mx-auto px-4 sm:px-6">
           <nav
-            className="relative flex items-center mt-6 sm:h-10 justify-end"
+            className="relative flex items-center mt-0 sm:mt-6 sm:h-10 justify-end"
             aria-label="Global"
           >
             <div className="flex  flex-1 md:absolute md:inset-y0- md:left-0">
@@ -23,15 +23,15 @@ export default function Header() {
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img
-                    className="logo cursor-pointer"
+                    className="logo"
                     src="/logo.png"
                     alt=""
                   />
                 </a>
                 <div className="-mr-2 flex items-center md:hidden">
-                  <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="bg-darkBleu rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span className="sr-only">Open main menu</span>
-                    <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                    <MenuIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </Popover.Button>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default function Header() {
             focus
             className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
           >
-            <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+            <div className="rounded-lg shadow-md bg-darkBleu ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="px-5 pt-4 flex items-center justify-between">
                 <div>
                   <img
@@ -73,9 +73,9 @@ export default function Header() {
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center hover:text-opacity-40 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="bg-darkBleu rounded-md p-2 inline-flex items-center justify-center hover:text-opacity-40 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span className="sr-only">Close menu</span>
-                    <XIcon className="h-6 w-6" aria-hidden="true" />
+                    <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </Popover.Button>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 cursor-pointer rounded-md text-base font-lg text-yellow hover:text-opacity-40"
+                    className="block px-3 py-2 cursor-pointer rounded-md text-base font-lg text-yellow sm:text-white hover:text-opacity-40"
                   >
                     {item.name}
                   </a>

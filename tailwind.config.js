@@ -10,6 +10,9 @@ module.exports = {
         blue: {
           DEFAULT: "#98e0ef",
         },
+        darkBleu: {
+          DEFAULT: "rgb(5,41,66)",
+        },
         yellow: {
           DEFAULT: "#fff600",
         },
