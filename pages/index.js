@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Head>
-        <title>Next.js Starter!</title>
+        <title>SweatersOnChain. The first fully tilable Christmas pattern with real world utility. 100% On-Chain</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
