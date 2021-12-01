@@ -4,28 +4,27 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "Wait, what?", href: "#wat" },
+  { name: "Roadmap", href: "#roadmap" },
+  { name: "Mint", href: "#mint" },
 ];
 
 export default function Header() {
   return (
-    <div className="absolute pt-6 pb-16 sm:pb-24">
+    <div className="absolute w-screen top-0 z-20 pt-6 pb-16 sm:pb-24">
       <Popover>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-screen-2xl p-t-8 mx-auto px-4 sm:px-6">
           <nav
-            className="relative flex items-center justify-between sm:h-10 md:justify-center"
+            className="relative flex items-center mt-6 sm:h-10 justify-end"
             aria-label="Global"
           >
-            <div className="flex  flex-1 md:absolute md:inset-y-0 md:left-0">
+            <div className="flex  flex-1 md:absolute md:inset-y0- md:left-0">
               <div className="flex justify-between w-full md:w-auto">
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img
-                    className="h-8 w-auto sm:h-10"
-                    src="/public/logo.png"
+                    className="logo cursor-pointer"
+                    src="/logo.png"
                     alt=""
                   />
                 </a>
@@ -42,7 +41,7 @@ export default function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="font-medium text-gray-500 hover:text-gray-900"
+                  className="cursor-pointer text-xl text-yellow text-opacity-50 hover:text-opacity-100"
                 >
                   {item.name}
                 </a>
@@ -69,12 +68,12 @@ export default function Header() {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    src="/logo.png"
                     alt=""
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center hover:text-opacity-40 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span className="sr-only">Close menu</span>
                     <XIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -85,7 +84,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    className="block px-3 py-2 cursor-pointer rounded-md text-base font-lg text-yellow hover:text-opacity-40"
                   >
                     {item.name}
                   </a>
@@ -95,10 +94,6 @@ export default function Header() {
           </Popover.Panel>
         </Transition>
       </Popover>
-
-      <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
-        <div className="text-center">sadfasdfasdf</div>
-      </main>
     </div>
   );
 }

@@ -2,8 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
+@font-face {
+  font-family: 'Upheaval TT -BRK-';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Upheaval TT -BRK-'), url('/upheavtt.woff') format('woff');
+  }
 html {
   background-color: #562b1f;
 height:100vh;
@@ -13,7 +17,12 @@ height:100vh;
 
 main {
   position: relative;
+  width: 100vw;
+}
 
+.body-title {
+  color:  #fff600;
+  font-family: 'Upheaval TT -BRK-';
 }
 
 .header-top-bg {
@@ -25,12 +34,15 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background: rgb(5,41,66);
+  background: linear-gradient(180deg, rgba(5,41,66,1) 0%, rgba(5,59,122,1) 62%);
 }
 .header-top-bg .blue {
-  background-color: #0e3961;
+  /* background-color: #01355b; */
+  
   max-height: 700px;
   overflow: hidden;
-  height: 73vw;
+  height: 83vw;
   background-image: url('/wall-bottom-tile.png');
   background-position: bottom left;
   background-repeat: repeat-x;
@@ -41,8 +53,67 @@ main {
 } */
 .header-top-img {
   width: 100vw;
-  position: absolute;
+  position: relative;
 }
 .header-top-img img {
-  margin: 50px auto 0;
+  margin: 10px auto 0;
+}
+
+
+
+.sweaterCarousel {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  margin-top: -500px
+}
+
+.sweaterCarousel img{
+  max-width: 700px;
+  display: flex;
+  align-self: center;
+
+}
+@media (max-width: 599px) { 
+
+  .sweaterCarousel {
+    margin-top: -300px
+  }
+  .sweaterCarousel img{
+    max-width: 480px;
+  }
+}
+
+.sweaterNavigation {
+  width: 80%;
+  margin: auto;
+  max-width: 1400px;
+  display: flex;
+  margin-top: -300px;
+  margin-bottom: 200px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.arrowRight {
+  border: solid #fff600;
+  border-width: 0 20px 20px 0;
+  display: inline-block;
+  padding: 20px;
+  transform: rotate(-45deg);
+}
+
+.arrowLeft {
+  border: solid #fff600 ;
+  border-width: 0 20px 20px 0;
+  display: inline-block;
+  padding: 20px;
+  transform: rotate(135deg);
+  
+}
+
+.logo {
+  width: 300px
 }
