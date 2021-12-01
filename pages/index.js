@@ -30,11 +30,11 @@ export default function Home() {
       <SweaterCarousel />
       <div id="wat" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="z-10 mx-auto  relative  ">
-          <h1 className="text-6xl max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
-            {/* <span className="text-yellow">100% On Chain</span>
-            <span className=" text-red inline">Christmas</span> */}
-            <span className=" text-red blcok ">UGLY SWEATER PATTERNS </span>
-            <span className=" text-yellow ">ON-CHAIN</span>
+          <h1 className="text-6xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
+            <span className="text-yellow">UGLY </span>
+            <span className=" text-green inline">Christmas </span>
+            <span className=" text-red ">PATTERNS </span>
+            <span className=" text-blue block">ON-CHAIN</span>
           </h1>
 
           <div className="mt-16">
@@ -44,13 +44,13 @@ export default function Home() {
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
                     <img className="w-auto" src="/star.png" alt="" />
                   </div>
-                  <p className="font-medium text-3xl pt-2 pb-4 ml-20 text-green">
-                    Looks rare
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
+                    Looks Rare
                   </p>
                 </dt>
-                <dd className="text-2xl  ml-20 text-gray-200">
+                <dd className="text-2xl  ml-24 text-gray-200">
                   200 traits, 40+ colors, 200+ Millions possibilities. Generated
-                  at mint time
+                  at mint time.
                 </dd>
               </div>
               <div className="relative">
@@ -58,13 +58,13 @@ export default function Home() {
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
                     <img className="w-auto" src="/bell.png" alt="" />
                   </div>
-                  <p className="font-medium text-3xl pt-2 pb-4 ml-20 text-green">
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
                     100% On-Chain
                   </p>
                 </dt>
-                <dd className="text-2xl ml-20 text-gray-200">
-                  As long as the Ethereum blockchain is around, so will be your
-                  NFT
+                <dd className="text-2xl ml-24 text-gray-200">
+                  As long as the Ethereum blockchain is around, so will your
+                  NFT.
                 </dd>
               </div>
               <div className="relative">
@@ -72,13 +72,17 @@ export default function Home() {
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
                     <img className="w-auto" src="/glove.png" alt="" />
                   </div>
-                  <p className="font-medium text-3xl pt-2 pb-4 ml-20 text-green">
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
                     IRL Utility
                   </p>
                 </dt>
-                <dd className="text-2xl  ml-20 text-gray-200">
-                  With dApp you can claim a neatable pattern for you NFT. This
-                  pattern will include a unique ID to prove it's authenticity
+                <dd className="text-2xl  ml-24 text-gray-200">
+                  Every pattern can claim a knittable template.
+                  <br />{" "}
+                  <i>
+                    Geek note: You'll even have a hash that'll prove that you
+                    are the owner of IRL sweater.
+                  </i>
                 </dd>
               </div>
               <div className="relative">
@@ -86,75 +90,97 @@ export default function Home() {
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
                     <img className="w-auto" src="/candycane.png" alt="" />
                   </div>
-                  <p className="font-medium text-3xl pt-2 pb-4 ml-20 text-green">
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
                     VIP
                   </p>
                 </dt>
-                <dd className="text-2xl  ml-20 text-gray-200">
-                  All hodlers of a Christmas Sweater Pattern will be whitelisted for our next drop!
+                <dd className="text-2xl  ml-24 text-gray-200">
+                  All hodlers of a Christmas Sweater Pattern will be whitelisted
+                  for our next drop!
                 </dd>
               </div>
             </dl>
           </div>
 
-          <h1 id="roadmap" className="text-6xl mt-20 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
-           ROADMAP
+          <h1
+            id="roadmap"
+            className=" title-shadow text-7xl mt-28 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight"
+          >
+            THE ROADMAP
           </h1>
 
-          <dl className="space-y-4 text-center text-2xl text-white">
-            <dt className="font-medium text-3xl pt-6 text-blue">
-              500 Free Mint
+          <dl className="space-y-2 max-w-3xl mx-auto text-center text-3xl">
+            <dt className="font-medium text-3xl pt-12 text-white">
+              <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
+                First 500 NFTs
+              </span>
+              The Free Mint
             </dt>
-            <dd className="">
-              It's all free so far. It's a free mint what do you
-              expect
+            <dd className="text-gray-200 text-2xl opacity-80">
+              It's all free so far, what do you expect?
             </dd>
 
-            <dt className="font-medium text-3xl pt-6 text-blue">
-              1000 Sold: The Basics
+            <dt className="font-medium text-3xl pt-12 text-white">
+              <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
+                1000 NFTs Sold
+              </span>
+              The Basics
             </dt>
-            <dd className="">
-              Open up the discord. Rarity sites. Hire community manager.
+            <dd className="text-gray-200 text-2xl opacity-80">
+              Open up the Discord. Listing on Rarity sites. Hire a Merry and
+              Cherry community manager.
             </dd>
 
-            <dt className="font-medium text-3xl pt-6 text-blue">
-              1500 Sold: IRL Utility
+            <dt className="font-medium text-3xl pt-12 text-white">
+              <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
+                1500 NFTs Sold
+              </span>
+              Sweater claim enabled
             </dt>
-            <dd className="">
-              Using our dApp you will be able to claim neatable pattern have it
-              custom made. The claimaible mechanism include a unique has that
-              prove that the physical sweater is unique.
+            <dd className="text-gray-200 text-2xl opacity-80">
+              Using our dApp you will be able to claim Knittable template of
+              your NFT. The claiming mechanism includes a unique hash to
+              authentify the sweater IRL. Learn more in the Discord.
             </dd>
 
-            <dt className="font-medium text-3xl pt-6 text-blue">
-              2000 Sold: Let's get neating
+            <dt className="font-medium text-3xl pt-12 text-white">
+              <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
+                2000 NFTs Sold
+              </span>
+              Let's get Knitted
             </dt>
-            <dd className="">
-              {" "}
-              Top 10 rarest pattern will get entitled to a free custom made
-              sweater featuring their NFT. (This of all the fun XMas
-              conversation this is going to spark)
+            <dd className="text-gray-200 text-2xl opacity-80">
+              Top 10 rarest Ugly Patterns can claim a free, custom made sweater
+              featuring their NFT. (This of all the fun XMas conversation this
+              is going to spark)
             </dd>
 
-            <dt className="font-medium text-3xl pt-6 text-blue">
-              3333 Sold: And now we dance.
+            <dt className="font-medium text-3xl pt-12 text-white">
+              <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
+                SOLD OUT!
+              </span>
+              And now we dance
             </dt>
-            <dd className="">
+            <dd className="text-gray-200 text-2xl opacity-80">
               Futur development funded. Sandbox Airdrops for all holders.
             </dd>
+
             <dt className="font-medium text-3xl pt-6 text-blue">BONUS</dt>
-            <dd className="">
-              Whitelist for our next project droping early January 2022.
+
+            <dd className="text-gray-200 text-2xl opacity-80">
+              Whether we sale 2 or 3000, you will get a Whitelist access for our
+              next drop. It combines unique DEFI mechanisms with NFTs. Coming
+              early January 2022.
             </dd>
           </dl>
         </div>
 
-
-        <h1 id="roadmap" className="text-6xl mt-20 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
-           Mint
-          </h1>
-
-
+        <h1
+          id="roadmap"
+          className="text-6xl mt-20 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight"
+        >
+          Mint
+        </h1>
       </div>
       <Footer />
     </div>

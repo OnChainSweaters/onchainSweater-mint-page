@@ -6,6 +6,7 @@
   font-family: 'Upheaval TT -BRK-';
   font-style: normal;
   font-weight: normal;
+  
   src: local('Upheaval TT -BRK-'), url('/upheavtt.woff') format('woff');
   }
 html {
@@ -46,6 +47,7 @@ main {
   background-image: url('/wall-bottom-tile.png');
   background-position: bottom left;
   background-repeat: repeat-x;
+  
 }
 /* .header-top-bg .brown {
   background-color: #562b1f;
@@ -116,4 +118,9 @@ main {
 
 .logo {
   width: 300px
+}
+
+
+.title-shadow {
+  text-shadow: #0b0b0b91 1px 2px 3px;
 }
