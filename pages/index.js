@@ -33,15 +33,25 @@ const faqs = [
   {
     question: "How much is the mint?",
     answer:
-      'The first 500 NFTs are free, then 0.04 per mint',
+      'The first 500 NFTs are free, then 0.03 per mint',
   },
   {
-    question: "Wen reveal?",
+    question: "How much is the mint?",
     answer:
-      'Betwee 24 to 72 hours after the sellout or after we decide to close the minting process.',
-  },
+      'The first 500 NFTs are free, then 0.03 per mint',
+  },  
   {
-    question: "How many per wallet?",
+    question: "How will burning mechanism work",
+    answer:
+      'The plan is to allow buring two 128x128 px sweater to generate a new 256x256 one. We are still working out of the detail so this may change.',
+  },
+  // {
+  //   question: "Why on-chain?",
+  //   answer:
+  //     '',
+  // },
+  {
+    question: "How many NFT per wallet address?",
     answer:
       '10 max per wallet. 10 per transaction.',
   },
@@ -237,7 +247,7 @@ export default function Home() {
                 FAQs
               </h1>
 
-              <dl className="mt-6 space-y-6 divide-y divide-brown">
+              <dl className="mt-0 space-y-6 divide-y divide-brown">
                 {faqs.map((faq) => (
                   <Disclosure as="div" key={faq.question} className="pt-6">
                     {({ open }) => (
