@@ -113,7 +113,7 @@ export default function Home() {
                   </p>
                 </dt>
                 <dd className="text-2xl ml-24 text-gray-200">
-                  As long as the Ethereum blockchain is around, so will your
+                  128x128px of resolution generated on-chain. As long as the Ethereum blockchain is around, so will your
                   NFT.
                 </dd>
               </div>
@@ -244,10 +244,10 @@ export default function Home() {
                       <>
                         <dt className="text-lg">
                           <Disclosure.Button className="text-left w-full flex justify-between items-start text-blue">
-                            <span className="font-medium text-3xl pt-6 text-blue">
+                            <span className="font-medium text-2xl pt-3 text-blue">
                               {faq.question}
                             </span>
-                            <span className="ml-6 h-20 flex items-center">
+                            <span className="ml-6 h-16 flex items-center">
                               <ChevronDownIcon
                                 className={classNames(
                                   open ? "-rotate-180" : "rotate-0",

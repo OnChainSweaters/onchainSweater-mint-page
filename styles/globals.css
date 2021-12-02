@@ -61,15 +61,13 @@ main {
   margin: 10px auto 0;
 }
 
-
-
 .sweaterCarousel {
   display: flex;
   position: relative;
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  margin-top: -530px
+  margin-top: -430px
 }
 
 .sweaterCarousel img{
