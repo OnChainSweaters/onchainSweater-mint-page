@@ -17,7 +17,7 @@ export default function SweaterCarousel() {
         <div className="sweaterCarousel">
           <img src={`/sweater-${currentSweater}.png`} alt="" />
           <div className="sweaterNavigation">
-            <a className="arrowLeft" onClick={() =>setCurrentSweaterSafe(currentSweater-1)}></a>
+            <a  id="wat" className="arrowLeft" onClick={() =>setCurrentSweaterSafe(currentSweater-1)}></a>
             <a className="arrowRight" onClick={() => setCurrentSweaterSafe(currentSweater+1)}></a>
           </div>
         </div>

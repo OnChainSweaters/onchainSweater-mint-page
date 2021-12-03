@@ -36,11 +36,6 @@ const faqs = [
       'The first 500 NFTs are free, then 0.03 per mint',
   },
   {
-    question: "How much is the mint?",
-    answer:
-      'The first 500 NFTs are free, then 0.03 per mint',
-  },  
-  {
     question: "How will burning mechanism work",
     answer:
       'The plan is to allow buring two 128x128 px sweater to generate a new 256x256 one. We are still working out of the detail so this may change.',
@@ -88,7 +83,7 @@ export default function Home() {
       </main>
 
       <SweaterCarousel />
-      <div id="wat" className="max-w-7xl mx-auto px-4 mt-8 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 mt-8 sm:px-6 lg:px-8">
         <div className="z-10 mx-auto  relative  ">
           <h1 className="text-3xl md:text-6xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
             <span className="text-yellow">UGLY </span>
@@ -99,6 +94,26 @@ export default function Home() {
 
           <div className="mt-16">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+
+
+            <div className="relative">
+                <dt className="">
+                  <div className="absolute flex items-center justify-center h-20 w-20 text-white">
+                    <img className="w-auto" src="/glove.png" alt="" />
+                  </div>
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
+                    IRL Utility
+                  </p>
+                </dt>
+                <dd className="text-2xl  ml-24 text-gray-200">
+                  We want to bring NFTs into physical world. For this collection you will be able to claim a knittable version of your NFT and have it knitted.
+                  {/* <br /> */}
+                  {/* <i>
+                    You can do that once per NFT. A unique hash will generated to identify the physical sweater.
+                  </i> */}
+                </dd>
+              </div>
+
               <div className="relative">
                 <dt className="">
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
@@ -127,23 +142,21 @@ export default function Home() {
                   NFT.
                 </dd>
               </div>
+
               <div className="relative">
                 <dt className="">
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
-                    <img className="w-auto" src="/glove.png" alt="" />
+                    <img className="w-auto" src="/burn.png" alt="" />
                   </div>
                   <p className="font-medium text-3xl pb-4 ml-24 text-green">
-                    IRL Utility
+                    Deflationary
                   </p>
                 </dt>
-                <dd className="text-2xl  ml-24 text-gray-200">
-                  We want to bring NFTs into physical world. For this collection you will be able to claim a knittable version of your NFT and have it knitted. Each sweater will have a unique hash.
-                  {/* <br /> */}
-                  {/* <i>
-                    You can do that once per NFT. A unique hash will generated to identify the physical sweater.
-                  </i> */}
+                <dd className="text-2xl ml-24 text-gray-200">
+                  Burn two of the 128x128px sweaters to mint a 256x256px one. Traits will be rerolled. Limited to 1000.
                 </dd>
               </div>
+
               <div className="relative">
                 <dt className="">
                   <div className="absolute flex items-center justify-center h-20 w-20 text-white">
@@ -156,6 +169,19 @@ export default function Home() {
                 <dd className="text-2xl  ml-24 text-gray-200">
                   All hodlers of a Christmas Sweater Pattern will be whitelisted
                   for our next drop!
+                </dd>
+              </div>
+              <div className="relative">
+                <dt className="">
+                  <div className="absolute flex items-center justify-center h-20 w-20 text-white">
+                    <img className="w-auto" src="/present.png" alt="" />
+                  </div>
+                  <p className="font-medium text-3xl pb-4 ml-24 text-green">
+                    Affordable
+                  </p>
+                </dt>
+                <dd className="text-2xl  ml-24 text-gray-200">
+                  First 500 mints are free. Then only 0.03Ξ.
                 </dd>
               </div>
             </dl>
