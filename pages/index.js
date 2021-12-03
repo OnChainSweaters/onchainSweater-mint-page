@@ -137,12 +137,11 @@ export default function Home() {
                   </p>
                 </dt>
                 <dd className="text-2xl  ml-24 text-gray-200">
-                  Every pattern can claim a knittable template.
-                  <br />
-                  <i>
-                    Geek note: You'll get a unique hash that proves that you
-                    are the owner of the sweater.
-                  </i>
+                  We want to bring NFTs into physical world. For this collection you will be able to claim a knittable version of your NFT and have it knitted. Each sweater will have a unique hash.
+                  {/* <br /> */}
+                  {/* <i>
+                    You can do that once per NFT. A unique hash will generated to identify the physical sweater.
+                  </i> */}
                 </dd>
               </div>
               <div className="relative">
@@ -207,7 +206,7 @@ export default function Home() {
               <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
                 2000 NFTs Sold
               </span>
-              Let's get Knitted
+              Let's get knitting!
             </dt>
             <dd className="text-gray-200 text-2xl opacity-80">
               Top 10 rarest Ugly Patterns can claim for free, one custom made
@@ -222,8 +221,9 @@ export default function Home() {
               And now we start
             </dt>
             <dd className="text-gray-200 text-2xl opacity-80">
-              Futur developments in the textile on chain serie.<br/>
-              We will partnering with clothing artisan through the world to produce unique peices for our NFT collections.<br/>
+              Futur developments in the "textile on-chain" serie.<br/>
+              We will partnering with clothing artisan through the world to produce unique pieces for our NFT patterns.<br/>
+              Summer collection.<br/>
               Sandbox wearable Airdrops for all holders.
             </dd>
 
