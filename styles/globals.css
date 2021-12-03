@@ -130,3 +130,106 @@ main {
 .title-shadow {
   text-shadow: #0b0b0b91 1px 2px 3px;
 }
+
+
+.mint-section { 
+  margin-top: -900px;
+}
+.mint-box {
+  width: 789px;
+  position:relative;
+  margin: 0 auto;
+}
+.mint-box-content {
+  background: url('/mint-box-background.png') top left repeat;
+  padding-left: 95px;
+  padding-right: 95px;
+  padding-top:10px;
+  padding-bottom: 20px;
+}
+.mint-box-top{
+  background: url('/mint-box-top.png') top left no-repeat;
+  width: 789px;
+  height: 92px;
+  margin-top: -92px;
+}
+
+.mint-box-bottom{
+  background: url('/mint-box-bottom.png') top left no-repeat;
+  width: 789px;
+  height: 92px;
+  margin-bottom: -92px;
+}
+
+
+.progress {
+  margin: 64px auto 4px;
+  padding: 2px;
+  width: 100%;
+  max-width: 500px;
+  border: 3px solid #e3b179;
+  height: 50px;
+}
+
+.progress .progress__bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4ea97d;
+}
+
+.mint-progress-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px auto 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.mint-progress-label p {
+  display: block;
+  color: #770200;
+  font-family: "Press Start 2P";
+}
+
+.mint-progress-text {
+  color: #770200;
+  text-align: center;
+}
+
+.mint-box-form {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.mint-box-input{
+  /* border: 2px solid #770200; */
+  width: 80px;
+  border: none;
+  background: url('/mint-input.png') top left no-repeat;
+  text-align: center;
+  height: 60px;
+  padding: 10px;
+  display: block;
+  color: #770200;
+  font-family: "Press Start 2P";
+  margin-right: 8px;
+}
+.mint-button {
+  width:140px;
+  display: block;
+  height: 60px;
+  font-family: "Press Start 2P";
+  color: white;
+  background: url('/mint-btn.png') top left no-repeat;
+  overflow: hidden;
+}
+
+.mint-button:hover {
+  opacity: 0.6
+}

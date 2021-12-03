@@ -4,9 +4,9 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 export const navigation = [
-  { name: "Wait, what?", href: "#wat" },
-  { name: "Roadmap", href: "#roadmap" },
-  { name: "Mint", href: "#mint" },
+  { name: "Wait, what?", href: "/#wat" },
+  { name: "Roadmap", href: "/#roadmap" },
+  { name: "Mint", href: "/mint" },
 ];
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
           >
             <div className="flex  flex-1 md:absolute md:inset-y0- md:left-0">
               <div className="flex justify-between w-full md:w-auto">
-                <a href="#">
+                <a href="/">
                   <span className="sr-only">Workflow</span>
                   <img
                     className="logo"
