@@ -312,7 +312,9 @@ export default function Home() {
           id="roadmap"
           className="text-5xl md:text-6xl mt-20 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight"
         >
-          Mint
+                     <span className="text-yellow">AND </span>
+            <span className=" text-green inline">MERRY </span>
+            <span className=" text-red ">CHRISTMAS! </span>
         </h1>
       </div>
       <footer>
