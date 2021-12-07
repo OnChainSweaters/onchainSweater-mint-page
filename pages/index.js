@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: "How much is the mint?",
-    answer: "The first 500 NFTs are free, then 0.03 per mint",
+    answer: "The first 333 NFTs are free, then 0.02 per mint",
   },
   {
     question: "How will burning mechanism work",
@@ -47,6 +47,11 @@ const faqs = [
   {
     question: "How many NFT per wallet address?",
     answer: "10 max per wallet. 10 per transaction.",
+  },
+  {
+    question: "Wen reveal",
+    answer:
+      "Since the reveal is very expensive (Rare items might go as high as 0.1ETH in gas to upload) we will have to a fews hour to catch lower gas for the reveal. This could take a few days.",
   },
   // More questions...
 ];
@@ -82,16 +87,15 @@ export default function Home() {
 
       {/* <SweaterCarousel /> */}
       <div className="content-wrap">
-        <div className="max-w-7xl mx-auto px-4 mt-8 sm:px-6 lg:px-8">
-          <div className="z-10 mx-auto    ">
-            <h1 className="text-3xl md:text-6xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
-              <span className="text-yellow">Knittable </span>
+        <div className="max-w-6xl mx-auto px-4 mt-10 sm:px-6 lg:px-8">
+          <div className="z-10 mx-autox">
+            <h1 className="text-5xl md:text-7xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
+              <span className="text-yellow">100% On-Chain </span>
               <span className=" text-green inline">Christmas </span>
               <span className=" text-red ">PATTERNS </span>
-              <span className=" text-blue block">ON-CHAIN</span>
             </h1>
 
-            <div className="mt-16">
+            <div className="mt-8 md:mt-12">
               <h1 className="max-w-7xl mx-auto px-4 mt-8 sm:px-6 lg:px-8w text-center">
                 <img className="anmiatedPeek" src={`/animated_peak_2.gif`} alt="" />
               </h1>
@@ -184,7 +188,7 @@ export default function Home() {
                     </p>
                   </dt>
                   <dd className="text-2xl  ml-24 text-gray-200">
-                    First 500 mints are free. Then only 0.03Ξ.
+                    First 333 mints are free. Then only 0.02Ξ.
                   </dd>
                 </div>
               </dl>
@@ -200,7 +204,7 @@ export default function Home() {
             <dl className="space-y-2 max-w-3xl mx-auto text-center text-3xl">
               <dt className="font-medium text-3xl pt-12 text-white">
                 <span className="block font-semibold text-blue text-lg tracking-wide uppercase">
-                  First 500 NFTs
+                  First 333 NFTs
                 </span>
                 The Free Mint
               </dt>

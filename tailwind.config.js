@@ -18,6 +18,12 @@ module.exports = {
         },
         red: {
           DEFAULT: "#e5383b",
+        },
+        brownText: {
+          DEFAULT: "#760200",
+        },
+        brown: {
+          DEFAULT: "#4a1607",
         }
       },
       fontFamily: {

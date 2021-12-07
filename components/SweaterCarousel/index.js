@@ -13,7 +13,7 @@ export default function SweaterCarousel() {
   }
   return (
     <>
-      <div className="top-16 sweaterCarouselWrapper">
+      <div className="top-10 md:top-16 sweaterCarouselWrapper">
         <div className="sweaterCarousel">
           <img src={`/animated_peak_2.gif`} alt="" />
           {/* <div className="sweaterNavigation">

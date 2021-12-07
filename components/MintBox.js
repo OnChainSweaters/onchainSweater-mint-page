@@ -25,6 +25,7 @@ const makeContract = (networkID) => {
 export default function MintBox() {
   const [mintCount, setMintCount] = useState(1);
   const [account, setAccount] = useState(null);
+  const [pendingTx, setPendingTx] = useState(null);
   const [contract, setContract] = useState(null);
   const [w3Client, setW3Client] = useState(null);
   const [provider, setProvider] = useState(null);
@@ -56,12 +57,14 @@ export default function MintBox() {
     if (contract === null) {
       return null;
     }
-    const price = totalSupply >= freeSupply ? 0.03 : 0;
+    const price = totalSupply >= freeSupply ? 0.02 : 0;
     const value = String(count * price);
     try {
-      await contract.methods
+      const txData = await contract.methods
         .mintPublicSale(count)
         .send({ from: account, value: Web3.utils.toWei(value) });
+      console.log(txData);
+      setPendingTx(txData);
     } catch (err) {
       console.log(err);
       setMintError(err.message);
@@ -123,6 +126,18 @@ export default function MintBox() {
   }, [contract]);
 
   useEffect(async () => {
+    if (pendingTx !== null) {
+      console.log("SHOULD CHECK FOR TRANSACTIONS STATUS");
+      // const timeout = setInterval(async () => {
+      //   const mintedCount = await checkTotalSupply();
+      //   setTotalSupply(mintedCount);
+      //   console.log("Minted count", mintedCount);
+      // }, 5000);
+      // return () => clearInterval(timeout);
+    }
+  }, [pendingTx]);
+
+  useEffect(async () => {
     if (contract !== null && saleOpened === false) {
       const timeout = setInterval(async () => {
         const isSaleOpened = await checkSaleOpened();
@@ -153,8 +168,7 @@ export default function MintBox() {
 
   async function mint() {
     try {
-      console.log("here");
-      await mintNFT(1);
+      await mintNFT(mintCount);
     } catch (ex) {
       console.log(ex);
     }
@@ -174,39 +188,64 @@ export default function MintBox() {
               {/* <span className="text-yellow">MINTING </span>
               <span className=" text-green inline">OPENS </span>
               <span className=" text-red ">VERY </span> */}
-              <span className=" text-yellow block">MINTING VERY SOON...</span>
+              {saleOpened ? (
+                <span className=" text-yellow block ">Minting is opened!</span>
+              ) : (
+                <span className=" text-yellow block">MINTING VERY SOON...</span>
+              )}
             </h1>
-            <ProgressBar currentlySold={totalSupply} maxSupply={maxSupply} />
-            <p className="text-lg mint-progress-text">
-              Current Mint Price:{" "}
-              <b>{totalSupply >= freeSupply ? "0.03Ξ" : "FREE"}</b>
-            </p>
-            {wrongNetworkError ? (
-              <p>{wrongNetworkError}</p>
+            {pendingTx ? (
+              <>
+                <p className="text-lg mint-progress-text text-brownText">
+                  Bravo! Your transaction is pending. <a href={`https://ropsten.etherscan.io/tx/${pendingTx.transactionHash}`}>Check it here.</a> 
+                </p>
+              </>
             ) : (
-              <div>
-                <div className="mint-box-form">
-                  {account ? (
-                    <>
-                      <input
-                        className="mint-box-input"
-                        type="number"
-                        onChange={handleChange}
-                        value={mintCount}
-                        max="10"
-                        min="1"
-                      />
-                      <button onClick={mint} className="mint-button">
-                        Mint
-                      </button>
-                    </>
-                  ) : (
-                    <button onClick={connect} className="connect-button">
-                      Connect
-                    </button>
-                  )}
-                </div>
-              </div>
+              <>
+                <p className="text-lg mt-4 mb-4 pb-0 text-brownText">
+                  Mint is free for the first 300 tokens. Then 0.03Ξ. Max 10 NFTs
+                  per wallet.
+                </p>
+                <ProgressBar
+                  currentlySold={totalSupply}
+                  maxSupply={maxSupply}
+                />
+                <p className="text-lg mint-progress-text text-brownText">
+                  Current Mint Price:
+                  <b>{totalSupply >= freeSupply ? "0.02Ξ" : "FREE"}</b>
+                </p>
+                {wrongNetworkError ? (
+                  <p>{wrongNetworkError}</p>
+                ) : (
+                  <div>
+                    <div className="mint-box-form">
+                      {account ? (
+                        <>
+                          <input
+                            className="mint-box-input"
+                            type="number"
+                            onChange={handleChange}
+                            value={mintCount}
+                            max={
+                              totalSupply > freeSupply
+                                ? "10"
+                                : Math.max(totalSupply - freeSupply, 10)
+                            }
+                            min="1"
+                          />
+                          <button onClick={mint} className="mint-button">
+                            Mint
+                          </button>
+                        </>
+                      ) : (
+                        <button onClick={connect} className="connect-button">
+                          Connect
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
