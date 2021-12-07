@@ -15,11 +15,11 @@ export default function SweaterCarousel() {
     <>
       <div className="top-16 sweaterCarouselWrapper">
         <div className="sweaterCarousel">
-          <img src={`/sweater-${currentSweater}.png`} alt="" />
-          <div className="sweaterNavigation">
+          <img src={`/animated_peak_2.gif`} alt="" />
+          {/* <div className="sweaterNavigation">
             <a  id="wat" className="arrowLeft" onClick={() =>setCurrentSweaterSafe(currentSweater-1)}></a>
             <a className="arrowRight" onClick={() => setCurrentSweaterSafe(currentSweater+1)}></a>
-          </div>
+          </div> */}
         </div>
 
       </div>

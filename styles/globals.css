@@ -72,10 +72,23 @@ main {
   width: 100vw;
   margin-top: -430px;
 }
-
+.anmiatedPeek {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  border: 10px solid #321710;
+  min-width: 280px;
+  height: auto;   
+}
+.content-wrap {
+  position: relative;
+  z-index: 100;
+  margin-top: -100px;
+}
 .sweaterCarousel img {
   max-width: 700px;
   display: flex;
+
   align-self: center;
 }
 .sweaterNavigation {

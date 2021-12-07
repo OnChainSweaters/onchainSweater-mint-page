@@ -1,6 +1,4 @@
-export default function ProgressBar({currentlySold}) {
-  const totalSupply = 3333;
-
+export default function ProgressBar({currentlySold = '?', maxSupply = '3333'}) {
 
   return (
     <div className="progress-wrap">
@@ -8,8 +6,8 @@ export default function ProgressBar({currentlySold}) {
         <div className="progress__bar" style={{width: '30%'}}></div>
       </div>
       <div className="mint-progress-label">
-          <p className="">33</p>
-          <p className="">3333</p>
+          <p className="">{currentlySold ? currentlySold : 'N/A'}</p>
+          <p className="">{maxSupply}</p>
         </div>  
     </div>
   );

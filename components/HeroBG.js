@@ -1,6 +1,6 @@
 export default function HeroBG() {
   return (
-    <div className="relative pt-6 pb-16 sm:pb-24">
+    <div className="relative pt-6">
       <div className="header-top-bg">
         <div className="blue"></div>
       </div>

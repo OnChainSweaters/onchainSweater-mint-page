@@ -1,12 +1,7 @@
 import ProgressBar from "@components/ProgressBar";
 import { useState, useEffect } from "react";
-import web3Connector from "./web3Connection";
 import contractAbi from "../contracts/OnChainSweaters.json";
 import { Contract } from "@ethersproject/contracts";
-import { ethers, utils } from "ethers";
-import web3 from "web3";
-
-import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import Web3 from "web3";
 
 const addressAndAbi = (networkID) => {
@@ -25,7 +20,6 @@ const makeContract = (networkID) => {
     return new Contract(address, abi);
   }
 };
-const MAX_SUPPLY = 3333; 
 
 export default function MintBox() {
   const [mintCount, setMintCount] = useState(1);
@@ -33,32 +27,54 @@ export default function MintBox() {
   const [contract, setContract] = useState(null);
   const [w3Client, setW3Client] = useState(null);
   const [provider, setProvider] = useState(null);
+  const [wrongNetworkError, setWrongNetworkError] = useState(null);
+  const [mintError, setMintError] = useState(null);
   const [totalSupply, setTotalSupply] = useState(null);
-  const [totalSupplyPercent, setTotalSupplyPercenter] = useState(null);
+  const [freeSupply, setFreeSupply] = useState(null);
+  const [maxSupply, setMaxSupply] = useState(3333);
   // const {abi, address} = addressAndAbi(chainId)
-  console.log('contract', contract)
-  console.log('account', account)
-  console.log('provider', provider)
-  console.log('totalSupply', totalSupply)
-  
-  
-
+  console.log("contract", contract);
+  console.log("account", account);
+  console.log("provider", provider);
+  console.log("totalSupply", totalSupply);
 
   const checkTotalSupply = () => {
     if (contract !== null && w3Client) {
-      return contract.methods.getTotalMinted().call({from: account})
+      return contract.methods.getTotalMinted().call({ from: account });
     }
-  }
+  };
 
-  const mintNFT = (count) => {
-    sendMint(BigNumber.from(count));
+  const mintNFT = async (count) => {
+    if (contract === null) {
+      return null;
+    }
+    const price = totalSupply >= 3 ? 0.03 : 0;
+    const value = String(count * price);
+    try {
+      await contract.methods
+        .mintPublicSale(count)
+        .send({ from: account, value: Web3.utils.toWei(value) });
+    } catch (err) {
+      console.log(err);
+      setMintError(err.message);
+    }
   };
 
   useEffect(async () => {
     if (contract === null && w3Client) {
       const networkID = await w3Client.eth.net.getId();
-      const NFTContract = new w3Client.eth.Contract(contractAbi.abi, contractAbi.networks[networkID].address)
-      setContract(NFTContract)
+      console.log('netowkrID', networkID)
+      if (!contractAbi.networks[networkID]) {
+        setWrongNetworkError('Please connect to Ethereum Mainnet in order to mint')
+        return
+      }
+      const NFTContract = new w3Client.eth.Contract(
+        contractAbi.abi,
+        contractAbi.networks[networkID].address
+      );
+      setFreeSupply(await NFTContract.methods.MAX_FREE_MINT_SUPPLY.call({from:account}).call())
+      setMaxSupply(await NFTContract.methods.MAX_SUPPLY.call({from:account}).call())
+      setContract(NFTContract);
     }
   }, [w3Client]);
 
@@ -66,24 +82,26 @@ export default function MintBox() {
     if (provider === null && window.ethereum) {
       const mmProvider = window.ethereum;
       setProvider(mmProvider);
-      setW3Client(new Web3(mmProvider))
-      const accounts = await mmProvider.request({method: "eth_requestAccounts" });
-      setAccount(accounts[0])
-      mmProvider.on('accountsChanged', (accounts) => {
-        setAccount(accounts[0])
-      })
+      setW3Client(new Web3(mmProvider));
+      const accounts = await mmProvider.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(accounts[0]);
+      mmProvider.on("accountsChanged", (accounts) => {
+        setAccount(accounts[0]);
+        setWrongNetworkError(null)
+      });
     }
-
   }, []);
 
   useEffect(async () => {
     if (contract !== null) {
       const timeout = setInterval(async () => {
-        const mintedCount = await checkTotalSupply()
-        setTotalSupply(mintedCount)
-        console.log('Minted count', mintedCount)
-      }, 5000)
-      return () => clearInterval(timeout)
+        const mintedCount = await checkTotalSupply();
+        setTotalSupply(mintedCount);
+        console.log("Minted count", mintedCount);
+      }, 5000);
+      return () => clearInterval(timeout);
     }
   }, [contract]);
 
@@ -105,7 +123,8 @@ export default function MintBox() {
 
   async function mint() {
     try {
-      // mintNFT(1)
+      console.log("here");
+      await mintNFT(1);
     } catch (ex) {
       console.log(ex);
     }
@@ -114,7 +133,6 @@ export default function MintBox() {
   const handleChange = (event) => {
     setMintCount(event.target.value);
   };
-
 
   return (
     <div className="pt-6 pb-16 sm:pb-24">
@@ -127,34 +145,38 @@ export default function MintBox() {
               <span className=" text-red ">VERY </span> */}
               <span className=" text-yellow block">MINTING VERY SOON...</span>
             </h1>
-            <ProgressBar />
+            <ProgressBar  currentlySold={totalSupply} maxSupply={maxSupply}/>
             <p className="text-lg mint-progress-text">
-              Current Mint Price: <b>FREE</b>
+              Current Mint Price: <b>{totalSupply > freeSupply ? '0.03Ξ' : 'FREE' }</b>
             </p>
-
-            <div>
-              <div className="mint-box-form">
-                {account ? (
-                  <>
-                    <input
-                      className="mint-box-input"
-                      type="number"
-                      onChange={handleChange}
-                      value={mintCount}
-                      max="10"
-                      min="1"
-                    />
-                    <button onClick={mint} className="mint-button">
-                      Mint
+            {
+              wrongNetworkError ? (<p>{wrongNetworkError}</p>) : (
+                <div>
+                <div className="mint-box-form">
+                  {account ? (
+                    <>
+                      <input
+                        className="mint-box-input"
+                        type="number"
+                        onChange={handleChange}
+                        value={mintCount}
+                        max="10"
+                        min="1"
+                      />
+                      <button onClick={mint} className="mint-button">
+                        Mint
+                      </button>
+                    </>
+                  ) : (
+                    <button onClick={connect} className="connect-button">
+                      Connect
                     </button>
-                  </>
-                ) : (
-                  <button onClick={connect} className="connect-button">
-                    Connect
-                  </button>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
+              )
+            }
+
           </div>
         </div>
       </div>
