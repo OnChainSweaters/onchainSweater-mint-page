@@ -1,4 +1,5 @@
 import ProgressBar from "@components/ProgressBar";
+import Banner from "@components/Banner";
 import { useState, useEffect } from "react";
 import contractAbi from "../contracts/OnChainSweaters.json";
 import { Contract } from "@ethersproject/contracts";
@@ -31,6 +32,7 @@ export default function MintBox() {
   const [mintError, setMintError] = useState(null);
   const [totalSupply, setTotalSupply] = useState(null);
   const [freeSupply, setFreeSupply] = useState(null);
+  const [saleOpened, setSaleOpened] = useState(false);
   const [maxSupply, setMaxSupply] = useState(3333);
   // const {abi, address} = addressAndAbi(chainId)
   console.log("contract", contract);
@@ -44,11 +46,17 @@ export default function MintBox() {
     }
   };
 
+  const checkSaleOpened = () => {
+    if (contract !== null && w3Client) {
+      return contract.methods.isPublicSaleOpen().call({ from: account });
+    }
+  };
+
   const mintNFT = async (count) => {
     if (contract === null) {
       return null;
     }
-    const price = totalSupply >= 3 ? 0.03 : 0;
+    const price = totalSupply >= freeSupply ? 0.03 : 0;
     const value = String(count * price);
     try {
       await contract.methods
@@ -63,18 +71,27 @@ export default function MintBox() {
   useEffect(async () => {
     if (contract === null && w3Client) {
       const networkID = await w3Client.eth.net.getId();
-      console.log('netowkrID', networkID)
+      console.log("netowkrID", networkID);
       if (!contractAbi.networks[networkID]) {
-        setWrongNetworkError('Please connect to Ethereum Mainnet in order to mint')
-        return
+        setWrongNetworkError(
+          "Please connect to Ethereum Mainnet in order to mint"
+        );
+        return;
       }
       const NFTContract = new w3Client.eth.Contract(
         contractAbi.abi,
         contractAbi.networks[networkID].address
       );
-      setFreeSupply(await NFTContract.methods.MAX_FREE_MINT_SUPPLY.call({from:account}).call())
-      setMaxSupply(await NFTContract.methods.MAX_SUPPLY.call({from:account}).call())
+      setFreeSupply(
+        await NFTContract.methods.MAX_FREE_MINT_SUPPLY.call({
+          from: account,
+        }).call()
+      );
+      setMaxSupply(
+        await NFTContract.methods.MAX_SUPPLY.call({ from: account }).call()
+      );
       setContract(NFTContract);
+      setTotalSupply(await checkTotalSupply());
     }
   }, [w3Client]);
 
@@ -89,7 +106,7 @@ export default function MintBox() {
       setAccount(accounts[0]);
       mmProvider.on("accountsChanged", (accounts) => {
         setAccount(accounts[0]);
-        setWrongNetworkError(null)
+        setWrongNetworkError(null);
       });
     }
   }, []);
@@ -100,6 +117,19 @@ export default function MintBox() {
         const mintedCount = await checkTotalSupply();
         setTotalSupply(mintedCount);
         console.log("Minted count", mintedCount);
+      }, 5000);
+      return () => clearInterval(timeout);
+    }
+  }, [contract]);
+
+  useEffect(async () => {
+    if (contract !== null && saleOpened === false) {
+      const timeout = setInterval(async () => {
+        const isSaleOpened = await checkSaleOpened();
+        if (isSaleOpened !== saleOpened) {
+          setSaleOpened(isSaleOpened);
+        }
+        console.log("sale opened", isSaleOpened);
       }, 5000);
       return () => clearInterval(timeout);
     }
@@ -136,6 +166,7 @@ export default function MintBox() {
 
   return (
     <div className="pt-6 pb-16 sm:pb-24">
+      <Banner test="This is just a test" />
       <div className="mint-section">
         <div className="mint-box">
           <div className="mint-box-content">
@@ -145,13 +176,15 @@ export default function MintBox() {
               <span className=" text-red ">VERY </span> */}
               <span className=" text-yellow block">MINTING VERY SOON...</span>
             </h1>
-            <ProgressBar  currentlySold={totalSupply} maxSupply={maxSupply}/>
+            <ProgressBar currentlySold={totalSupply} maxSupply={maxSupply} />
             <p className="text-lg mint-progress-text">
-              Current Mint Price: <b>{totalSupply > freeSupply ? '0.03Ξ' : 'FREE' }</b>
+              Current Mint Price:{" "}
+              <b>{totalSupply >= freeSupply ? "0.03Ξ" : "FREE"}</b>
             </p>
-            {
-              wrongNetworkError ? (<p>{wrongNetworkError}</p>) : (
-                <div>
+            {wrongNetworkError ? (
+              <p>{wrongNetworkError}</p>
+            ) : (
+              <div>
                 <div className="mint-box-form">
                   {account ? (
                     <>
@@ -174,9 +207,7 @@ export default function MintBox() {
                   )}
                 </div>
               </div>
-              )
-            }
-
+            )}
           </div>
         </div>
       </div>
