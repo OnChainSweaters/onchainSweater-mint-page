@@ -76,14 +76,15 @@ main {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
-  border: 10px solid #321710;
+  border: 10px solid #ffffff54;
   min-width: 280px;
-  height: auto;   
+  height: auto;
+  box-shadow: 0 0 4px #0000008c;
 }
 .content-wrap {
   position: relative;
   z-index: 100;
-  margin-top: -100px;
+  margin-top: -160px;
 }
 .sweaterCarousel img {
   max-width: 700px;

@@ -97,7 +97,7 @@ export default function Home() {
 
             <div className="mt-8 md:mt-12">
               <h1 className="max-w-7xl mx-auto px-4 mt-8 sm:px-6 lg:px-8w text-center">
-                <img className="anmiatedPeek" src={`/animated_peak_2.gif`} alt="" />
+                <img className="anmiatedPeek" src={`/animated_peek.gif`} alt="" />
               </h1>
               <dl className="space-y-10 mt-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                 <div className="relative">

@@ -112,7 +112,7 @@ export default function MintBox() {
       const mmProvider = window.ethereum;
       setProvider(mmProvider);
       setW3Client(new Web3(mmProvider));
-      setInitializing(false)
+      setInitializing(false);
       // const accounts = await mmProvider.request({
       //   method: "eth_requestAccounts",
       // });
@@ -164,7 +164,7 @@ export default function MintBox() {
       const accounts = await provider.request({
         method: "eth_requestAccounts",
       });
-      setAccount(accounts)
+      setAccount(accounts);
     } catch (ex) {
       console.log(ex);
     }
@@ -190,7 +190,6 @@ export default function MintBox() {
     setMintCount(event.target.value);
   };
 
-  console.log(initializing)
   return (
     <div className="pt-6 pb-16 sm:pb-24">
       {/* <Banner test="This is just a test" /> */}
@@ -204,7 +203,7 @@ export default function MintBox() {
               {saleOpened ? (
                 <span className=" text-yellow block ">Minting is opened!</span>
               ) : (
-                <span className=" text-yellow block">MINTING VERY SOON...</span>
+                <span className=" text-yellow block">MINTING IS CLOSED</span>
               )}
             </h1>
 
@@ -212,66 +211,80 @@ export default function MintBox() {
               <p className="text-center">Initializing. Please hold on..</p>
             ) : (
               <>
-                {pendingTx ? (
+                {saleOpened ? (
                   <>
-                    <p className="text-lg mint-progress-text text-brownText">
-                      Bravo! Your transaction is pending.
-                      <a
-                        href={`https://etherscan.io/tx/${pendingTx.transactionHash}`}
-                      >
-                        Check it here.
-                      </a>
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-lg text-center mt-4 pb-0 text-brownText">
-                      Mint is free for the first 300 tokens, then 0.02Ξ. <br /> Max. 10
-                      NFTs per wallet.
-                    </p>
-                    <ProgressBar
-                      currentlySold={totalSupply}
-                      maxSupply={maxSupply}
-                    />
-                    <p className="text-lg mint-progress-text text-brownText">
-                      Current Mint Price:
-                      <b>{totalSupply >= freeSupply ? " 0.02Ξ" : " FREE"}</b>
-                    </p>
-                    {wrongNetworkError ? (
-                      <p>{wrongNetworkError}</p>
+                    {pendingTx ? (
+                      <>
+                        <p className="text-lg mint-progress-text text-brownText">
+                          Bravo! Your transaction is pending.
+                          <a
+                            href={`https://etherscan.io/tx/${pendingTx.transactionHash}`}
+                          >
+                            Check it here.
+                          </a>
+                        </p>
+                      </>
                     ) : (
-                      <div>
-                        <div className="mint-box-form">
-                          {account ? (
-                            <>
-                              <input
-                                className="mint-box-input"
-                                type="number"
-                                onChange={handleChange}
-                                value={mintCount}
-                                max={
-                                  totalSupply > freeSupply
-                                    ? "10"
-                                    : Math.max(totalSupply - freeSupply, 10)
-                                }
-                                min="1"
-                              />
-                              <button onClick={mint} className="mint-button">
-                                Mint
-                              </button>
-                            </>
-                          ) : (
-                            <button
-                              onClick={connect}
-                              className="connect-button"
-                            >
-                              Connect
-                            </button>
-                          )}
-                        </div>
-                      </div>
+                      <>
+                        <p className="text-lg text-center mt-4 pb-0 text-brownText">
+                          Mint is free for the first 333 tokens, then 0.02Ξ.{" "}
+                          <br /> Max. 10 NFTs per wallet. <br /> Free token
+                          remaining: {freeSupply - totalSupply}
+                        </p>
+                        <ProgressBar
+                          currentlySold={totalSupply}
+                          maxSupply={maxSupply}
+                        />
+                        <p className="text-lg mint-progress-text text-brownText">
+                          Current Mint Price:
+                          <b>
+                            {totalSupply >= freeSupply ? " 0.02Ξ" : " FREE"}
+                          </b>
+                        </p>
+                        {wrongNetworkError ? (
+                          <p>{wrongNetworkError}</p>
+                        ) : (
+                          <div>
+                            <div className="mint-box-form">
+                              {account ? (
+                                <>
+                                  <input
+                                    className="mint-box-input"
+                                    type="number"
+                                    onChange={handleChange}
+                                    value={mintCount}
+                                    max={
+                                      totalSupply > freeSupply
+                                        ? "10"
+                                        : Math.max(totalSupply - freeSupply, 10)
+                                    }
+                                    min="1"
+                                  />
+                                  <button
+                                    onClick={mint}
+                                    className="mint-button"
+                                  >
+                                    Mint
+                                  </button>
+                                </>
+                              ) : (
+                                <button
+                                  onClick={connect}
+                                  className="connect-button"
+                                >
+                                  Connect
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </>
                     )}
                   </>
+                ) : (
+                  <p className="text-center">
+                    We're still knitting, please hold on...
+                  </p>
                 )}
               </>
             )}
