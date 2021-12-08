@@ -197,7 +197,7 @@ export default function MintBox() {
             {pendingTx ? (
               <>
                 <p className="text-lg mint-progress-text text-brownText">
-                  Bravo! Your transaction is pending. <a href={`https://ropsten.etherscan.io/tx/${pendingTx.transactionHash}`}>Check it here.</a> 
+                  Bravo! Your transaction is pending. <a href={`https://etherscan.io/tx/${pendingTx.transactionHash}`}>Check it here.</a> 
                 </p>
               </>
             ) : (
