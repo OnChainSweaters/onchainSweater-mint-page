@@ -51,7 +51,7 @@ const faqs = [
   {
     question: "Wen reveal",
     answer:
-      "Since the reveal is very expensive (Rare items might go as high as 0.1ETH in gas to upload) we will have to a fews hour to catch lower gas for the reveal. This could take a few days.",
+      "We will trigger the reveal after sellout or in case the minting does not finish, after we reached token ID 600 so that we can cover gas fees",
   },
   // More questions...
 ];
