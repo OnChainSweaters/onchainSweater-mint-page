@@ -40,10 +40,12 @@ export default function MintBox() {
   console.log("account", account);
   console.log("provider", provider);
   console.log("totalSupply", totalSupply);
+  console.log("free supply", freeSupply);
 
-  const checkTotalSupply = () => {
+  const checkTotalSupply = async () => {
     if (contract !== null && w3Client) {
-      return contract.methods.getTotalMinted().call({ from: account });
+      const result = await contract.methods.getTotalMinted().call({ from: account });
+      return parseInt(result);
     }
   };
 
@@ -58,6 +60,8 @@ export default function MintBox() {
       return null;
     }
     const price = totalSupply >= freeSupply ? 0.02 : 0;
+    console.log(price);
+    console.log(totalSupply, freeSupply);
     const value = String(count * price);
     try {
       const txData = await contract.methods
@@ -85,14 +89,19 @@ export default function MintBox() {
         contractAbi.abi,
         contractAbi.networks[networkID].address
       );
-      setFreeSupply(
+      const freeSupplyResult =
         await NFTContract.methods.MAX_FREE_MINT_SUPPLY.call({
           from: account,
-        }).call()
-      );
-      setMaxSupply(
-        await NFTContract.methods.MAX_SUPPLY.call({ from: account }).call()
-      );
+        }).call();
+      console.log(freeSupplyResult)
+      setFreeSupply(parseInt(freeSupplyResult));
+
+      const maxSupplyResult = await NFTContract.methods.MAX_SUPPLY.call({
+        from: account,
+      }).call();
+      console.log(maxSupplyResult)
+      setMaxSupply(parseInt(maxSupplyResult, 10));
+
       setContract(NFTContract);
       setTotalSupply(await checkTotalSupply());
     }
@@ -197,7 +206,12 @@ export default function MintBox() {
             {pendingTx ? (
               <>
                 <p className="text-lg mint-progress-text text-brownText">
-                  Bravo! Your transaction is pending. <a href={`https://etherscan.io/tx/${pendingTx.transactionHash}`}>Check it here.</a> 
+                  Bravo! Your transaction is pending.{" "}
+                  <a
+                    href={`https://etherscan.io/tx/${pendingTx.transactionHash}`}
+                  >
+                    Check it here.
+                  </a>
                 </p>
               </>
             ) : (
