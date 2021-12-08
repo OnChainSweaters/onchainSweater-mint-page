@@ -88,7 +88,7 @@ export default function Home() {
       <div className="content-wrap">
         <div className="max-w-6xl mx-auto px-4 mt-10 sm:px-6 lg:px-8">
           <div className="z-10 mx-autox">
-            <h1 className="text-5xl md:text-7xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
+            <h1 id="wat" className="text-5xl md:text-7xl mx-auto title-shadow  text-yellow body-title  text-center font-pixel uppercase tracking-tight">
               <span className="text-yellow">100% On-Chain </span>
               <span className=" text-green inline">Christmas </span>
               <span className=" text-red ">PATTERNS </span>
