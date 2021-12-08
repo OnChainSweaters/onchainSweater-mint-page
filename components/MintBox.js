@@ -164,7 +164,7 @@ export default function MintBox() {
       const accounts = await provider.request({
         method: "eth_requestAccounts",
       });
-      setAccount(accounts);
+      setAccount(accounts[0]);
     } catch (ex) {
       console.log(ex);
     }
@@ -180,6 +180,10 @@ export default function MintBox() {
 
   async function mint() {
     try {
+      if (saleOpened === false ) {
+        alert('It looks like the sale is not opened yet.')
+        return false
+      }
       await mintNFT(mintCount);
     } catch (ex) {
       console.log(ex);
@@ -210,8 +214,7 @@ export default function MintBox() {
             {initializing ? (
               <p className="text-center">Initializing. Please hold on..</p>
             ) : (
-              <>
-                {saleOpened ? (
+
                   <>
                     {pendingTx ? (
                       <>
@@ -281,12 +284,7 @@ export default function MintBox() {
                       </>
                     )}
                   </>
-                ) : (
-                  <p className="text-center">
-                    We're still knitting, please hold on...
-                  </p>
-                )}
-              </>
+
             )}
           </div>
         </div>
