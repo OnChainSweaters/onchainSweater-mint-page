@@ -205,7 +205,7 @@ export default function MintBox() {
               <span className=" text-green inline">OPENS </span>
               <span className=" text-red ">VERY </span> */}
               {saleOpened ? (
-                <span className=" text-yellow block ">Minting is opened!</span>
+                <span className=" text-yellow block ">Merry XMas!</span>
               ) : (
                 <span className=" text-yellow block">MINTING IS CLOSED</span>
               )}
