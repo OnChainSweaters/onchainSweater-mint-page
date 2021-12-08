@@ -17,8 +17,7 @@ const faqs = [
     question: "What does 100% on-chain means?",
     answer:
       "It means all code and art for this NFT collection lives on the Ethereum blockchain." +
-      "It has no outside dependencies. This is good because your NFT does not really on anything " +
-      "but ethereum to exists. So as long as the Ethereum blockchain is around, so is your NFT.",
+      "It has no outside dependencies. As long as the Ethereum blockchain is around, so is your NFT.",
   },
   {
     question: "Wen mint?",
