@@ -207,7 +207,7 @@ export default function MintBox() {
               {saleOpened ? (
                 <span className=" text-yellow block ">Merry XMas!</span>
               ) : (
-                <span className=" text-yellow block">MINTING IS CLOSED</span>
+                <span className=" text-yellow block">LOADING...</span>
               )}
             </h1>
 
