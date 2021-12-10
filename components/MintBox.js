@@ -230,9 +230,7 @@ export default function MintBox() {
                     ) : (
                       <>
                         <p className="text-lg text-center mt-4 pb-0 text-brownText">
-                          Mint is free for the first 333 tokens, then 0.02Ξ.{" "}
-                          <br /> Max. 10 NFTs per wallet. <br /> Free token
-                          remaining: {freeSupply - totalSupply}
+                          The minting is now opened. For any questions, join the discord!
                         </p>
                         <ProgressBar
                           currentlySold={totalSupply}

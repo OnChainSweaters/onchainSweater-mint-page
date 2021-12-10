@@ -116,6 +116,13 @@ main {
     max-width: 360px;
   }
 }
+.social-nav {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
 
 .arrowRight {
   border: solid #fff600;
