@@ -237,10 +237,7 @@ export default function MintBox() {
                           maxSupply={maxSupply}
                         />
                         <p className="text-lg mint-progress-text text-brownText">
-                          Current Mint Price:
-                          <b>
-                            {totalSupply >= freeSupply ? " 0.02Ξ" : " FREE"}
-                          </b>
+                          Current Mint Price 0.02Ξ:
                         </p>
                         {wrongNetworkError ? (
                           <p>{wrongNetworkError}</p>
