@@ -6,6 +6,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 export const navigation = [
   { name: "Wait, what?", href: "/#wat" },
   { name: "Roadmap", href: "/#roadmap" },
+  { name: "FAQ", href: "/#faq" },
   { name: "Mint", href: "/mint" },
 ];
 

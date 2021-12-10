@@ -297,7 +297,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
               <div className="max-w-3xl mx-auto ">
                 <h1
-                  id="roadmap"
+                  id="faq"
                   className=" title-shadow text-3xl md:text-6xl mt-28 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight"
                 >
                   FAQs
@@ -339,7 +339,6 @@ export default function Home() {
           </div>
 
           <h1
-            id="roadmap"
             className="text-5xl md:text-6xl mt-20 max-w-3xl mx-auto  text-yellow body-title  text-center font-pixel uppercase tracking-tight"
           >
             <span className="text-yellow">AND </span>
