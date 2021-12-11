@@ -230,7 +230,7 @@ export default function MintBox() {
                     ) : (
                       <>
                         <p className="text-lg text-center mt-4 pb-0 text-brownText">
-                          The minting is now opened. For any questions, join the discord!
+                          The minting is now opened.
                         </p>
                         <ProgressBar
                           currentlySold={totalSupply}
