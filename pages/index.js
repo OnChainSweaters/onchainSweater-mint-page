@@ -6,8 +6,12 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-6DVND8L786')
+import TagManager from 'react-gtm-module'
+ 
+const tagManagerArgs = {
+    gtmId: 'G-6DVND8L786'
+}
+ 
 
 const footerNav = [
   {
@@ -76,7 +80,7 @@ function classNames(...classes) {
 }
 export default function Home() {
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    TagManager.initialize(tagManagerArgs)
   }, [])
   return (
     <div className="relative">

@@ -6,8 +6,13 @@ import { Disclosure } from "@headlessui/react";
 import { useState, useEffect} from 'react';
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { SocialIcon } from "react-social-icons";
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-6DVND8L786')
+import TagManager from 'react-gtm-module'
+ 
+const tagManagerArgs = {
+    gtmId: 'GTM-000000'
+}
+ 
+
 const footerNav = [
   {
     name: "Twitter",
@@ -26,7 +31,7 @@ function classNames(...classes) {
 export default function Mint() {
   const [mintOpen, setMintOpen] = useState(false)
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    TagManager.initialize(tagManagerArgs)
   }, [])
   return (
     <div className="relative">
