@@ -129,7 +129,7 @@ export default function MintBox() {
       const timeout = setInterval(async () => {
         const mintedCount = await checkTotalSupply();
         setTotalSupply(mintedCount);
-      }, 5000);
+      }, 1000);
       return () => clearInterval(timeout);
     }
   }, [contract]);
@@ -154,7 +154,7 @@ export default function MintBox() {
           setSaleOpened(isSaleOpened);
         }
         console.log("sale opened", isSaleOpened);
-      }, 5000);
+      }, 1000);
       return () => clearInterval(timeout);
     }
   }, [contract]);
