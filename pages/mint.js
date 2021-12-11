@@ -3,9 +3,11 @@ import Header from "@components/Header";
 import MintBox from "@components/MintBox";
 import HeroBG from "@components/HeroBG";
 import { Disclosure } from "@headlessui/react";
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { SocialIcon } from "react-social-icons";
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-6DVND8L786')
 const footerNav = [
   {
     name: "Twitter",
@@ -23,6 +25,9 @@ function classNames(...classes) {
 }
 export default function Mint() {
   const [mintOpen, setMintOpen] = useState(false)
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, [])
   return (
     <div className="relative">
       <Head>
@@ -42,14 +47,6 @@ export default function Mint() {
           rel="stylesheet"
         ></link>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DVND8L786"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)}
-          gtag('js', new Date());
-
-          gtag('config', 'G-6DVND8L786');
-        </script>
       </Head>
 
       <main>
